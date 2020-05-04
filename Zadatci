@@ -1,0 +1,11 @@
+1.
+/*Funkcija*/
+CREATE FUNCTION Inicijali (@ime VARCHAR(30))
+RETURNS VARCHAR(30)
+BEGIN
+ RETURN REVERSE(@ime);
+END
+
+GO
+SELECT dbo.Inicijali('David') AS Inicijali;
+
