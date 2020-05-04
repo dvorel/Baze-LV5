@@ -9,3 +9,30 @@ END
 GO
 SELECT dbo.Naopako('David') AS Reverse;
 
+/*procedura*/
+
+ALTER PROCEDURE naopakoI (@ime NVARCHAR(30))
+AS
+ DECLARE @imer NVARCHAR(30)
+ SET @imer = REVERSE(@ime)
+ PRINT @imer
+ RETURN (0)
+
+/*trigger*/
+CREATE TABLE osoba(
+ime VARCHAR(30) PRIMARY KEY,
+nIme VARCHAR(30),
+);
+
+CREATE TRIGGER naopakoIme
+ON osoba
+INSTEAD OF INSERT
+AS
+DECLARE @ime VARCHAR(30);
+SELECT @ime = ime
+  FROM inserted;
+INSERT INTO osoba(ime, nIme) values (@ime, reverse(@ime));
+
+GO
+INSERT INTO osoba(ime) values('ime');
+select * from osoba
