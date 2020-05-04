@@ -11,7 +11,7 @@ SELECT dbo.Naopako('David') AS Reverse;
 
 /*procedura*/
 
-ALTER PROCEDURE naopakoI (@ime NVARCHAR(30))
+CREATE PROCEDURE naopakoI (@ime NVARCHAR(30))
 AS
  DECLARE @imer NVARCHAR(30)
  SET @imer = REVERSE(@ime)
@@ -36,3 +36,62 @@ INSERT INTO osoba(ime, nIme) values (@ime, reverse(@ime));
 GO
 INSERT INTO osoba(ime) values('ime');
 select * from osoba
+
+
+2.
+CREATE PROCEDURE Horoskop (@datum DATE)
+AS 
+	DECLARE @datump DATE
+	SET @datump = @datum
+	IF((MONTH(@datump) = 03 AND DAY(@datump) >=21) OR (MONTH(@datump)=04 AND DAY(@datump)<=20) )
+	BEGIN
+	PRINT 'Ovan' ;
+	END
+	IF((MONTH(@datump) = 04 AND DAY(@datump) >=21) OR (MONTH(@datump)=05 AND DAY(@datump)<=20) )
+	BEGIN
+	PRINT 'Bik' ;
+	END
+	IF((MONTH(@datump) = 05 AND DAY(@datump) >=21) OR (MONTH(@datump)=06 AND DAY(@datump)<=20) )
+	BEGIN
+	PRINT 'Blizanac' ;
+	END
+	IF((MONTH(@datump) = 06 AND DAY(@datump) >=21) OR (MONTH(@datump)=07 AND DAY(@datump)<=20) )
+	BEGIN
+	PRINT 'Rak' ;
+	END
+	IF((MONTH(@datump) = 07 AND DAY(@datump) >=21) OR (MONTH(@datump)=08 AND DAY(@datump)<=21) )
+	BEGIN
+	PRINT 'Lav' ;
+	END
+	IF((MONTH(@datump) = 08 AND DAY(@datump) >=22) OR (MONTH(@datump)=09 AND DAY(@datump)<=22) )
+	BEGIN
+	PRINT 'Djevica' ;
+	END
+	IF((MONTH(@datump) = 09 AND DAY(@datump) >=23) OR (MONTH(@datump)=10 AND DAY(@datump)<=22) )
+	BEGIN
+	PRINT 'Vaga' ;
+	END
+	IF((MONTH(@datump) = 10 AND DAY(@datump) >=23) OR (MONTH(@datump)=11 AND DAY(@datump)<=22) )
+	BEGIN
+	PRINT '�korpion' ;
+	END
+	IF((MONTH(@datump) = 11 AND DAY(@datump) >=23) OR (MONTH(@datump)=12 AND DAY(@datump)<=21) )
+	BEGIN
+	PRINT 'Strijelac' ;
+	END
+	IF((MONTH(@datump) = 12 AND DAY(@datump) >=22) OR (MONTH(@datump)=01 AND DAY(@datump)<=22) )
+	BEGIN
+	PRINT 'Jarac' ;
+	END
+	IF((MONTH(@datump) = 01 AND DAY(@datump) >=21) OR (MONTH(@datump)=02 AND DAY(@datump)<=19) )
+	BEGIN
+	PRINT 'Vodenjak' ;
+	END
+	IF((MONTH(@datump) = 02 AND DAY(@datump) >=20) OR (MONTH(@datump)=03 AND DAY(@datump)<=20) )
+	BEGIN
+	PRINT 'Riba' ;
+	END	
+RETURN (0)
+
+GO
+exec Horoskop '2017-6-11';
